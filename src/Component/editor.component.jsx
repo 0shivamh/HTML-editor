@@ -1,8 +1,24 @@
 import JoditEditor from "jodit-react";
 import React, { useRef } from "react";
 
-const config = {
-    buttons: ["bold", "italic", "link", "unlink", "underline", "source"],
+
+const editorConfig = {
+    readonly: false,
+    toolbar: true,
+    spellcheck: true,
+    language: "en",
+    toolbarButtonSize: "large",
+    toolbarAdaptive: false,
+    showCharsCounter: true,
+    showWordsCounter: true,
+    showXPathInStatusbar: false,
+    askBeforePasteHTML: true,
+    askBeforePasteFromWord: true,
+    // buttons: buttons,
+    uploader: {
+        insertImageAsBase64URI: true
+    },
+
 };
 const EditorComponent = ({ initialValue, getValue })=>{
     const editor = useRef(null);
@@ -12,9 +28,8 @@ const EditorComponent = ({ initialValue, getValue })=>{
             <JoditEditor
                 ref={editor}
                 value={initialValue}
-                // config={config}
+                config={editorConfig}
                 tabIndex={1}
-                //   onBlur={(newContent) => getValue(newContent)}
                 onChange={(newContent) => getValue(newContent)}
             />
         </>
